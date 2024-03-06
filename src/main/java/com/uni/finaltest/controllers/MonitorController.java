@@ -36,7 +36,7 @@ public class MonitorController {
     }
     @GetMapping("formUpdate")
     public String ShowFormUpdate(@RequestParam("vehicleId") Integer id, Model model) {
-        Optional<Vehicle> student = vehicleService.getVehicleById(id);
+        Optional<Vehicle> vehicle = vehicleService.getVehicleById(id);
         model.addAttribute("vehicle", vehicle);
         return "addNew";
     }
