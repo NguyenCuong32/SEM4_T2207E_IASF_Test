@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+        .error{color:red}
+    </style>
+</head>
+<body>
+<div>
+    <div class="m-4">
+        <h1>Add new a vehicle</h1>
+        <hr>
+    </div>
+    <form th:action="@{/save}" th:object="${vehicle}" method="post">
+        <div class="row m-4 g-3">
+            <div class="row g-3">
+                <input type="hidden" th:field="*{vehicleId}" />
+                <div class="col">
+                    <input type="text" autofocus="autofocus" th:field="*{firstName}" class="form-control" placeholder="First name" aria-label="First name">
+                </div>
+                <div class="col">
+                    <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last name" aria-label="Last name">
+                </div>
+                <div class="row g-3">
+                    <div class="col">
+                        <input type="text" th:field="*{email}" class="form-control" placeholder="Email" aria-label="Email">
+                    </div>
+                </div>
+                <div>
+                    <span>Erros list:</span>
+                    <ul>
+                        <li th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></li>
+                        <li th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></li>
+                        <li th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></li>
+                        <!--                    <li th:each="field : ${#fields.errors('*')}" th:errors="${field}" class="error"></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Save Student</button>
+                <a th:href="@{/student/list}" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

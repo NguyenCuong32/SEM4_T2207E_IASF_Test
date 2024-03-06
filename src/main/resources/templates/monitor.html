@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Monitor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div th:insert="fragments/header ::header">
+</div>
+<div class="container">
+    <h1>Monitor</h1>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addVehicle">
+        Add new Vehicle
+    </button>
+    <table class="table table-light" style="margin-top: 16px">
+        <thead class="table-dark">
+        <th>Vehicle ID</th>
+        <th>Vehicle Name</th>
+        <th>Vehicle Model</th>
+        <th>Year Of Manufacture</th>
+        <th>Vehicle Color</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+        <tr th:each="vehicle:${vehicles}">
+            <td th:text="${vehicle.vehicleId}"></td>
+            <td th:text="${vehicle.vehicleName}"></td>
+            <td th:text="${vehicle.vehicleModel}"></td>
+            <td th:text="${vehicle.yearOfManufacture}"></td>
+            <td th:text="${vehicle.vehicleColor}"></td>
+            <td>
+                <button class="btn btn-primary">edit</button>
+                <button class="btn btn-danger">delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="addVehicle" tabindex="-1" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add new Vehicle</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/save}" method="post">
+                        <div>
+                            <label>
+                                <input type="hidden" name="" id="" class="form-control"  placeholder="vehicleId">
+                            </label>
+                            <label>
+                                <input type="text" name="vehicleName" id="vehicleName" class="form-control"  placeholder="vehicleName">
+                            </label>
+                            <label>
+                                <input type="text" name="vehicleModel" id="vehicleModel" class="form-control"  placeholder="vehicleModel">
+                            </label>
+                            <label>
+                                <input type="text" name="yearOfManufacture" id="yearOfManufacture" class="form-control"  placeholder="yearOfManufacture">
+                            </label>
+                            <label>
+                                <input type="text" name="vehicleColor" id="vehicleColor" class="form-control"  placeholder="vehicleColor">
+                            </label>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:insert="fragments/footer ::footer-com">
+</footer>
+</body>
+</html>
