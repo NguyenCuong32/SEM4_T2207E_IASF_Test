@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/headAdmin::headAdmin">
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_sidebar.html -->
+    <div th:insert="fragments/sidebarAdmin::sidebarAdmin"></div>
+    <!-- partial -->
+    <div class="page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+        <div th:insert="fragments/navbarAdmin::navbarAdmin"></div>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row d-flex justify-content-center">
+                    <!-- content -->
+
+                    <section class="container-fluid">
+                        <h2>
+                            <span class="text-light">Actor</span>
+                            <small class="text-light" style="font-size: 0.5em">List Actor</small>
+                        </h2>
+                    </section>
+                    <hr/>
+                    <div class="position-relative w-100">
+                        <div class="col-md-8 bold-labels position-absolute m-lg-0">
+                            <a th:href="@{/admin/actor/create}" class="btn btn-primary btn-sm mb-2">Create Actor</a>
+                            <table id="myTable" class="display table table-dark table-striped w-100">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Slug
+                                    </th>
+                                    <th>
+                                        Avatar
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Manager
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="actor, i : ${actors}">
+                                    <td th:text="${i.index + 1}"/>
+                                    <td th:text="${actor.name}"></td>
+                                    <td th:text="${actor.slug}"></td>
+                                    <td><img th:src="@{'/avatarActors/' + ${actor.avatar}}" alt="${movie.nameEng}" class="h-auto w-100 rounded-0" /></td>
+                                    <td>
+                                        <span th:if="${actor.status == 1}">Display</span>
+                                        <span th:if="${actor.status == 0}">None</span>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{/admin/actor/edit(id=${actor.id})}" class="btn btn-info btn-sm">
+                                            edit
+                                        </a>
+
+                                        <a th:href="@{/admin/actor/delete(id=${actor.id})}" class="btn btn-danger btn-sm"  onclick="return confirm('Are you sure you want to delete this item?');">
+                                            delete
+                                        </a>
+
+                                        <a th:href="@{/admin/actor/addActorMovie(id=${actor.id})}" class="btn btn-info btn-sm">
+                                            Add Film
+                                        </a>
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <div th:insert="fragments/footerAdmin::footerAdmin"></div>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<div th:insert="fragments/scriptAdmin::scriptAdmin"></div>
+</body>
+</html>

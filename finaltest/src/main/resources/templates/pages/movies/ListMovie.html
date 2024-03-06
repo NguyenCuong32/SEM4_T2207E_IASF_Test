@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/headAdmin::headAdmin">
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_sidebar.html -->
+    <div th:insert="fragments/sidebarAdmin::sidebarAdmin"></div>
+    <!-- partial -->
+    <div class="page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+        <div th:insert="fragments/navbarAdmin::navbarAdmin"></div>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row d-flex justify-content-center">
+                    <!-- content -->
+
+                    <section class="container-fluid">
+                        <h2>
+                            <span class="text-light">Movie</span>
+                            <small class="text-light" style="font-size: 0.5em">List Movie</small>
+                        </h2>
+                    </section>
+                    <hr/>
+                    <div class="position-relative w-100">
+                        <div class="col-md-8 bold-labels position-absolute m-lg-0">
+                            <a th:href="@{/admin/movie/create}" class="btn btn-primary btn-sm mb-2">Create Movie</a>
+                            <table id="myTable" class="display table table-dark table-striped w-100">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        Id
+                                    </th>
+                                    <th>
+                                        Info movie
+                                    </th>
+                                    <th>
+                                        Poster
+                                    </th>
+                                    <th>
+                                        genre
+                                    </th>
+                                    <th>
+                                        Country
+                                    </th>
+                                    <th>
+                                        Manager
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="movie, i : ${movies}">
+                                    <td th:text="${i.index + 1}"/>
+                                    <td>
+                                        <p th:text="${movie.title}"></p>
+                                        <p th:text="'( ' + ${movie.nameEng} + ' )'"></p>
+                                        <span class="btn btn-light" th:text="${movie.category.title}"></span>
+                                        <span class="btn btn-success" th:if="${movie.statusFilm == 0}">Coming soon</span>
+                                        <span class="btn btn-success" th:if="${movie.statusFilm == 1}">Now showing</span>
+                                        <span class="btn btn-success" th:if="${movie.statusFilm == 2}">Complete</span>
+                                    </td>
+                                    <td>
+                                        <img th:src="@{'/poster/' + ${movie.poster}}" alt="${movie.nameEng}" class="h-auto w-100 rounded-0" />
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <p th:text="${movie.country.title}"></p>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{/admin/movie/edit(id=${movie.id})}" class="btn btn-info btn-sm">
+                                            edit
+                                        </a>
+
+                                        <a th:href="@{/admin/movie/delete(id=${movie.id})}" class="btn btn-danger btn-sm"  onclick="return confirm('Are you sure you want to delete this item?');">
+                                            delete
+                                        </a>
+
+                                        <a th:href="@{/admin/episode/add(id=${movie.id})}" class="btn btn-danger btn-sm">
+                                            Add Episode
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <div th:insert="fragments/footerAdmin::footerAdmin"></div>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<div th:insert="fragments/scriptAdmin::scriptAdmin"></div>
+</body>
+</html>

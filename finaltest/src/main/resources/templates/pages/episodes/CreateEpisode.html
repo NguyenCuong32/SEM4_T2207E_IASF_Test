@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/headAdmin::headAdmin">
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_sidebar.html -->
+    <div th:insert="fragments/sidebarAdmin::sidebarAdmin"></div>
+    <!-- partial -->
+    <div class="page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+        <div th:insert="fragments/navbarAdmin::navbarAdmin"></div>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper" style="height: 1000px">
+                <div class="row d-flex justify-content-center">
+                    <!-- content -->
+
+                    <section class="container-fluid">
+                        <h2>
+                            <span class="text-light">Movie</span>
+                            <small class="text-light" style="font-size: 0.5em">List Movie</small>
+                        </h2>
+                    </section>
+                    <hr/>
+                    <div class="position-relative w-100">
+                        <div class="col-md-8 bold-labels position-absolute m-lg-0">
+                            <a th:href="@{/admin/movie/create}" class="btn btn-primary btn-sm mb-2">Create Movie</a>
+                            <table id="myTable" class="display table table-dark table-striped w-100">
+                                <form action="#" th:action="@{/admin/episode/save(id=${movies.id})}" th:object="${listEpisode}" method="POST" enctype="multipart/form-data">
+                                <thead>
+                                <tr th:if="${movies.subtitle == 0}">
+                                    <th>Link VietSub</th>
+                                    <th>Episode</th>
+                                    <th>Manager</th>
+                                </tr>
+                                <tr th:if="${movies.subtitle == 1 || movies.subtitle == 2}">
+                                    <th>Link VietSub</th>
+                                    <th>Link Present</th>
+                                    <th>Episode</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                        <tr  th:each="episodeNumber,episodeIndex : ${listEpisode.episodesList}">
+
+                                            <td>
+                                                <input type="text" th:field="*{episodesList[__${episodeIndex.index}__].linkVietsub}" placeholder="please input title" class="form-control w-100">
+                                            </td>
+                                            <td>
+                                                <input type="text" th:field="*{episodesList[__${episodeIndex.index}__].linkPresent}" placeholder="please input title" class="form-control w-100">
+                                            </td>
+                                            <td>
+                                                <input type="text" th:field="*{episodesList[__${episodeIndex.index}__].episode}" placeholder="please input title" class="form-control w-100">
+                                            </td>
+                                        </tr>
+                                        <div>
+                                            <div class="btn-group" role="group">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <span class="mdi mdi-content-save"></span>
+                                                    <span>Save and Back List</span>
+                                                </button>
+                                            </div>
+                                            <a class="btn btn-default">
+                                                <span class="mdi mdi-backspace"></span>
+                                                <span>Exit</span>
+                                            </a>
+                                        </div>
+
+                                </tbody>
+                                </form>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <div th:insert="fragments/footerAdmin::footerAdmin"></div>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<div th:insert="fragments/scriptAdmin::scriptAdmin"></div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+.font-sm{
+    font-size: .85rem!important;
+}
+.d-print-none.font-sm{
+    background-color: transparent;
+    color: #7c69ef !important;
+    text-decoration: none !important;
+}
+
+.card {
+    background-clip: border-box;
+    background-color: #fff;
+    border: 1px solid rgba(0,40,100,.12);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+    margin-bottom: 1.5rem;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+}
+.btn-default{
+    background-color: #d9e2ef !important;
+    border-color: #d9e2ef !important;
+    color: #1b2a4e !important;
+}
+
+#list{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+#list li{
+    display: inline-block;
+    background: #555;
+    color: white;
+    padding: 3px 5px 3px 10px;
+    border-radius: 15px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#list li a{
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+    font-size: 10px;
+    background: #333;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#list li a:hover{
+    color: red;
+}
+
+#txt{
+    border: 0px;
+    background: none;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+
+
+#tag{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+#tag li{
+    display: inline-block;
+    background: #555;
+    color: white;
+    padding: 3px 5px 3px 10px;
+    border-radius: 15px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#tag li a{
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+    font-size: 10px;
+    background: #333;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#tag li a:hover{
+    color: red;
+}
+
+#inputTag{
+    border: 0px;
+    background: none;
+    margin-bottom: 5px;
+    display: inline-block;
+}

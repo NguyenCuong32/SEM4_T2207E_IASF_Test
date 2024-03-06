@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Film hay Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="/assets/vendors/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.carousel.min.css">
+  <link rel="stylesheet" href="/assets/vendors/css/styleAdmin.css">
+  <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="/assets/images/favicon.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-scroller">
+  <!-- partial:partials/_sidebar.html -->
+  <div th:insert="fragments/sidebarAdmin::sidebarAdmin"></div>
+  <!-- partial -->
+  <div class="page-body-wrapper">
+    <!-- partial:partials/_navbar.html -->
+    <div th:insert="fragments/navbarAdmin::navbarAdmin"></div>
+    <!-- partial -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row d-flex justify-content-center">
+          <!-- content -->
+
+          <section class="container-fluid">
+            <h2>
+              <span class="text-light">Country</span>
+              <small class="text-light" style="font-size: 0.5em">Add Country</small>
+              <small>
+                <a class="d-print-none font-sm" th:href="@{/admin/country/list}">
+                  <i class="mdi mdi-chevron-double-left"></i>
+                  Back List Country
+                </a>
+              </small>
+            </h2>
+          </section>
+
+          <hr/>
+          <div class="row">
+            <div class="col-md-8 bold-labels">
+              <form action="#" th:action="@{/admin/country/save}" th:object="${country}" method="POST">
+                <div class="card">
+                  <div class="card-body row">
+                    <div class="form-group col-sm-12">
+                      <div th:errors="*{title}" class="text-danger"></div>
+                      <label>Title</label>
+                      <input  type="text" th:field="*{title}" placeholder="please input title" class="form-control" onkeyup="ChangeToSlug()">
+                    </div>
+                    <div class="form-group col-sm-12">
+                      <label>Slug</label>
+                      <input  type="text" th:field="*{slug}" placeholder="please input title" class="form-control" id="convert_slug">
+                    </div>
+                    <div class="form-group col-sm-12">
+                      <label>Status</label>
+                      <select style="border: 1px solid #dee2e6; font-size: 14px" th:field="*{status}" class="form-control w-25 mb-4">
+                        <option th:value="1">Display</option>
+                        <option th:value="0">None</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div id="saveActions">
+                  <div class="btn-group" role="group">
+                    <button type="submit" class="btn btn-primary">
+                      <span class="mdi mdi-content-save"></span>
+                      <span>Save and Back List</span>
+                    </button>
+                  </div>
+                  <a th:href="@{/admin/country/list}" class="btn btn-default">
+                    <span class="mdi mdi-backspace"></span>
+                    <span>Exit</span>
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+      <div th:insert="fragments/footerAdmin::footerAdmin"></div>
+      <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="/assets/vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page -->
+<script src="/assets/vendors/chart.js/Chart.min.js"></script>
+<script src="/assets/vendors/progressbar.js/progressbar.min.js"></script>
+<script src="/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+<script src="/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+<!-- End plugin js for this page -->
+<!-- inject:js -->
+<script src="/assets/js/off-canvas.js"></script>
+<script src="/assets/js/hoverable-collapse.js"></script>
+<script src="/assets/js/misc.js"></script>
+<script src="/assets/js/settings.js"></script>
+<script src="/assets/js/todolist.js"></script>
+<script src="/assets/js/autowirte.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page -->
+<script src="/assets/js/dashboard.js"></script>
+<!-- End custom js for this page -->
+</body>
+</html>
