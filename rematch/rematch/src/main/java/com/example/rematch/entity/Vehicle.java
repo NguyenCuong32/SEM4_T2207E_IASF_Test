@@ -24,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
     @Column(name = "year_of_manufacture")
     @NotNull(message = " year is require")
-    @Size(message = "year is required")
+    
     public int year_of_manufacture;
 
     @Column(name = "vehicle_color")
