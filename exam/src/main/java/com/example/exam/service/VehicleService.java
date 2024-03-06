@@ -19,7 +19,6 @@ public class VehicleService {
     }
 
     public void createVehicle(Vehicle vehicle) {
-        vehicle.setVehicleId(Integer.valueOf(UUID.randomUUID().toString()));
         vehicleRepository.save(vehicle);
     }
 }
