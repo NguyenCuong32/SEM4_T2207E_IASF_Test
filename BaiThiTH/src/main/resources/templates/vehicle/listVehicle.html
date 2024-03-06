@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container mt-3">
+    <h2 class="text-success">Vehicle</h2>
+    <p>The .table-hover class enables a hover state (grey background on mouse over) on table rows:</p>
+    <!-- Button trigger modal -->
+    <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add
+    </a>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content" style="width: 500px; height: 420px; ">
+                <form th:action="@{/addVehicle}" method="post" style="width: 400px;padding-left: 80px">
+                    <div class="mb-3 mt-3">
+                        <label for="vehicleName" class="form-label">vehicleName</label>
+                        <input type="text" class="form-control" id="vehicleName" placeholder="Enter vehicleName" name="vehicleName" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="vehicleModel" class="form-label">vehicleModel</label>
+                        <input type="text" class="form-control" id="vehicleModel" placeholder="Enter vehicleModel" name="vehicleModel" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="yearOfManufacture" class="form-label">yearOfManufacture</label>
+                        <input type="number" class="form-control" id="yearOfManufacture" placeholder="Enter vehicleModel" name="yearOfManufacture" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="vehicleColor" class="form-label">vehicleColor</label>
+                        <input type="text" class="form-control" id="vehicleColor" placeholder="Enter vehicleColor" name="vehicleColor" >
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover mt-3">
+        <thead class="table-dark">
+        <tr class="text-center">
+            <th>#</th>
+            <th>vehicleName</th>
+            <th>vehicleModel</th>
+            <th>yearOfManufacture</th>
+            <th>vehicleColor</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="value, index : ${vehicleList}" class="text-center">
+            <td th:text="index.index+1"></td>
+            <td th:text="${value.vehicleName}"></td>
+            <td th:text="${value.vehicleModel}" ></td>
+            <td th:text="${value.yearOfManufacture}"></td>
+            <td th:text="${value.vehicleColor}"></td>
+            <td>
+                <a href="" class="btn btn-warning">Edit</a> |
+                <a th:href="@{'/deleteVehicle/' + ${value.vehicleId}}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>
