@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface IService {
     List<Ventity> getAllStudents();
-    Optional<Ventity> getStudentById(String id);
+    Optional<Ventity> getStudentById(String vehicle_id);
     void addNewStudent(Ventity ventity);
     void updateStudent();
-    void deleteStudent(String id);
+    void deleteStudent(String vehicle_id);
 }

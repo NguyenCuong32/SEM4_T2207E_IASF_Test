@@ -70,7 +70,7 @@ public class Ventity {
 
     @Override
     public String toString() {
-        return "entity{" +
+        return "Ventity{" +
                 "vehicle_id=" + vehicle_id +
                 ", tvehicle_name='" + tvehicle_name + '\'' +
                 ", vehicle_model='" + vehicle_model + '\'' +

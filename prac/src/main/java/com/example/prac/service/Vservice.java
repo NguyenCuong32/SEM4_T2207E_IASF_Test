@@ -2,6 +2,7 @@ package com.example.prac.service;
 
 import com.example.prac.entities.Ventity;
 import com.example.prac.repository.Vrepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class Vservice implements IService{
     }
 
     @Override
+    @Transactional
     public void addNewStudent(Ventity ventity) {
         ventity.save(ventity);
     }
