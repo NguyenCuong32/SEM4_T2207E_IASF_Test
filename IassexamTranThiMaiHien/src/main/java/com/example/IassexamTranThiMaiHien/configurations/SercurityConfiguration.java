@@ -23,14 +23,14 @@ public class SercurityConfiguration {
         httpSecurity
                 .authorizeHttpRequests(
                         configuration ->{configuration
-                                .requestMatchers("/vehicle/delete","/vehicle/create","/vehicle/save")
+                                .requestMatchers("/vehicle/delete","/vehicle/create","/vehicle/save","/vehicle/update")
 
                                 .hasRole("ADMIN")
                                 .anyRequest()
                                 .authenticated();
                         }
                 )
-                
+
                 .exceptionHandling(
                         configurer->configurer.accessDeniedPage("/exception/access-denied"))
                 .logout(logout ->logout
