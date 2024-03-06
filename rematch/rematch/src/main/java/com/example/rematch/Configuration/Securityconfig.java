@@ -18,16 +18,11 @@ public class Securityconfig {
         userDetailsManager.setAuthoritiesByUsernameQuery("select user_id,role from roles where user_id=?");
         return userDetailsManager;
     }
-
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(configuration -> {
             configuration
-//                    .requestMatchers("/pricing/**")
-//                    .hasRole("ADMIN,OPERATOR")
                     .anyRequest()
-
                     .authenticated();
         }).formLogin(
                 form -> form.loginPage("/loginPage")

@@ -15,34 +15,35 @@
 <body>
 <div>
     <div class="m-4">
-        <h1>Add new a employee</h1>
+        <h1>Add new a vehicle</h1>
         <div class="row align-items-start">
             <div class="col-6">
-                <form th:action="@{/employee/save}" method="post" th:object="${employee}">
+                <form th:action="@{/vehicle/save}" method="post" th:object="${vehicle}">
                     <div class="mb-3">
-                        <label for="employeeId" class="form-label">employeeId</label>
-                        <input th:field="*{employeeId}" type="text" class="form-control" id="employeeId" name="employeeId" placeholder="employeeId">
+                        <label for="vehicle_id" class="form-label">vehicle_id</label>
+                        <input th:field="*{vehicle_id}" type="text" class="form-control" id="vehicle_id" name="vehicle_id" placeholder="vehicle_id">
                     </div>
                     <div class="mb-3">
-                        <label for="employeeName" class="form-label">employeeName</label>
-                        <input th:field="*{employeeName}" type="text" class="form-control" id="employeeName" name="employeeName" placeholder="employeeName">
+                        <label for="vehicle_name" class="form-label">vehicle_name</label>
+                        <input th:field="*{vehicle_name}" type="text" class="form-control" id="vehicle_name" name="vehicle_id" placeholder="vehicle_name">
                     </div>
                     <div class="mb-3">
-                        <label for="birthday" class="form-label">birthday</label>
-                        <input th:field="*{birthday}" type="date" th:format="'dd-MM-yyyy'" class="form-control" id="birthday" name="birthday" placeholder="birthday">
+                        <label for="vehicle_model" class="form-label">vehicle_model</label>
+                        <input th:field="*{vehicle_model}"  class="form-control" id="vehicle_model"
+                               name="vehicle_model" placeholder="vehicle_model">
                     </div>
                     <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">phoneNumber</label>
-                        <input th:field="*{phoneNumber}" type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="phoneNumber">
+                        <label for="year_of_manufacture" class="form-label">year_of_manufacture</label>
+                        <input th:field="*{year_of_manufacture}" type="text" class="form-control" id="year_of_manufacture" name="year_of_manufacture" placeholder="year_of_manufacture">
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">email</label>
-                        <input th:field="*{email}" type="text" class="form-control" id="email" name="email" placeholder="email">
+                        <label for="vehicle_color" class="form-label">vehicle_color</label>
+                        <input th:field="*{vehicle_color}" type="text" class="form-control" id="vehicle_color" name="vehicle_color" placeholder="vehicle_color">
                     </div>
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Save employee</button>
-                        <a th:href="@{/employee/list}" class="btn btn-secondary">Back</a>
+                        <button type="submit" class="btn btn-primary">Save vehicle</button>
+                        <a th:href="@{/vehicle/list}" class="btn btn-secondary">Back</a>
                     </div>
                 </form>
             </div>

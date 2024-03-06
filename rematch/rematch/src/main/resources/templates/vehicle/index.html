@@ -13,35 +13,35 @@
 <div class="m-4">
     <h1 class ="cl">Employee List</h1>
     <hr>
-    <a th:href="@{/employee/formAdd}" class="btn btn-primary" role="button">Add new</a>
+    <a th:href="@{/vehicle/formAdd}" class="btn btn-primary" role="button">Add new</a>
 
 </div>
 
 <div class="container">
 <table class="table">
     <thead class="table table-dark">
-        <th>employeeId</th>
-        <th>employeeName</th>
-        <th>birthday</th>
-        <th>phoneNumber</th>
-        <th>email</th>
+        <th>vehicle_id </th>
+        <th>vehicle_name</th>
+        <th>vehicle_model</th>
+        <th>year_of_manufacture</th>
+        <th>vehicle_color</th>
         <th>Actions</th>
           <th>delete</th>
     </thead>
     <tbody>
-    <tr th:each="value : ${employees}">
+    <tr th:each="value : ${vehicles}">
 
-        <td th:text="${value.employeeId}"></td>
-        <td th:text="${value.employeeName}"></td>
-        <td th:text="${value.birthday}"></td>
-        <td th:text="${value.phoneNumber}"></td>
-        <td th:text="${value.email}"></td>
+        <td th:text="${value.vehicle_id}"></td>
+        <td th:text="${value.vehicle_name}"></td>
+        <td th:text="${value.vehicle_model}"></td>
+        <td th:text="${value.year_of_manufacture}"></td>
+        <td th:text="${value.vehicle_color}"></td>
         <td>
-            <a class ="btn btn-secondary" th:href="@{/employee/formUpdate(employeeId=${value.employeeId})}">Edit</a>
+            <a class ="btn btn-secondary" th:href="@{/vehicle/formUpdate(vehicleId=${value.vehicle_id})}">Edit</a>
 
         </td>
         <td>
-            <a class ="btn btn-danger" th:href="@{/employee/delete(employeeId=${value.employeeId})}">Delete</a>
+            <a class ="btn btn-danger" th:href="@{/vehicle/delete(vehicleId=${value.vehicle_id})}">Delete</a>
 
         </td>
 
