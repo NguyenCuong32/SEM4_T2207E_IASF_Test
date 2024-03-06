@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Edit a Vehicle</h1>
+    <div class="row align-items-start">
+        <div class="col-6">
+            <form th:action="@{/vehicle/save}" method="post" th:object="${vehicle}">
+                <div class="mb-3">
+                    <input th:field="*{vehicleId}" type="hidden" class="form-control" id="id" name="id" placeholder="vehicleId">
+                </div>
+                <div class="mb-3">
+                    <label for="vehicleName" class="form-label">vehicleName</label>
+                    <input th:field="*{vehicleName}" type="text" class="form-control" id="vehicleName" name="vehicleName" placeholder="vehicleName">
+                </div>
+                <div class="mb-3">
+                    <label for="vehicleModel" class="form-label">vehicleModel</label>
+                    <input th:field="*{vehicleModel}" type="text" class="form-control" id="vehicleModel" name="vehicleModel" placeholder="vehicleModel">
+                </div>
+                <div class="mb-3">
+                    <label for="yearOfManufacture" class="form-label">yearOfManufacture</label>
+                    <input th:field="*{yearOfManufacture}" type="number" class="form-control" id="yearOfManufacture" name="yearOfManufacture" placeholder="yearOfManufacture">
+                </div>
+                <div class="mb-3">
+                    <label for="vehicleColor" class="form-label">vehicleColor</label>
+                    <input th:field="*{vehicleColor}" type="text" class="form-control" id="vehicleColor" name="vehicleColor" placeholder="vehicleColor">
+                </div>
+
+                <button type="submit" class="btn btn-danger">Edit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
