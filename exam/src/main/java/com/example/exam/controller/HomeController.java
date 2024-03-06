@@ -42,7 +42,7 @@ public class HomeController {
 
         vehicleService.createVehicle(vehicle);
         model.addAttribute("vehicle", new Vehicle());
-        return "index";
+        return "redirect:/";
     }
 
 }
