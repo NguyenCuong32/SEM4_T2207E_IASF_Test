@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -15,5 +16,10 @@ public class VehicleService {
 
     public List<Vehicle> getAllVehicle() {
         return vehicleRepository.findAll();
+    }
+
+    public void createVehicle(Vehicle vehicle) {
+        vehicle.setVehicleId(Integer.valueOf(UUID.randomUUID().toString()));
+        vehicleRepository.save(vehicle);
     }
 }

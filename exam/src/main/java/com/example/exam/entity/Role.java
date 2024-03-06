@@ -6,7 +6,7 @@ import lombok.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,10 +15,14 @@ import java.io.Serializable;
 public class Role implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "user_id", length = 32, nullable = false)
+    private String userId;
 
-    @Column(nullable = false, unique = true)
-    private String name;
+    @Column(name = "role", length = 32, nullable = false)
+    private String roleName;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
+    private Member member;
 
 }
